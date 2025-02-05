@@ -13,7 +13,8 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:4200")
+                        //.allowedOrigins("http://localhost:4200")
+                        .allowedOrigins("*") //Para que permita acceder desde todos los origenes
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
             }
         };
