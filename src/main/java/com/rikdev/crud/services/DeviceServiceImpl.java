@@ -38,4 +38,11 @@ public class DeviceServiceImpl implements  DeviceService{
     public void deleteDevice(Long id){
         deviceRepository.deleteById(id);
     }
+
+    @Override
+    public List<Device> searchByDescription(String keyword) {
+        System.out.println("Buscando dispositivos con el término:" + keyword);
+        /*keyword = "VALIEN";*/
+        return deviceRepository.searchByDescription(keyword);
+    }
 }

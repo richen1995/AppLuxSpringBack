@@ -80,4 +80,18 @@ public class DeviceController {
         }
     }
 
+    @GetMapping("/search") //BUSQUEDA DE LOS DISPOSITIVOS POR UNA PALABRA CLAVE
+    public ResponseEntity<List<Device>> getDeviceKeyWord(@RequestParam  String keyword) {
+        List<Device> devices = deviceServiceImpl.searchByDescription(keyword);
+        /*return device.map(value ->new ResponseEntity<>(value,HttpStatus.OK)).orElseGet(() ->
+                new ResponseEntity<>(HttpStatus.NOT_FOUND));*/
+
+        // Si el dispositivo existe, se devuelve como un arreglo
+        if (!devices.isEmpty()) {
+            return new ResponseEntity<>(devices, HttpStatus.OK);
+        }
+
+        // Si no existe, se devuelve un arreglo vacío
+        return new ResponseEntity<>(List.of(), HttpStatus.NOT_FOUND);
+    }
 }
